@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KKC</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+   	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;subset=korean" rel="stylesheet">
+		<style>
+		p{
+			font-family: 'Nanum Gothic Coding', monospace;
+			margin-top : 0px;
+			margin-bottom: 0px;
+		}
+		/* The Modal (background) */
+		 .modal {
+				 display: none; /* Hidden by default */
+				 position: fixed; /* Stay in place */
+				 z-index: 1; /* Sit on top */
+				 left: 0;
+				 top: 0;
+				 width: 100%; /* Full width */
+				 height: 100%; /* Full height */
+				 overflow: auto; /* Enable scroll if needed */
+				 background-color: rgb(0,0,0); /* Fallback color */
+				 background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+		 }
+
+		 /* Modal Content/Box */
+		 .modal-content {
+				 background-color: #fefefe;
+				 margin: 15% auto; /* 15% from the top and centered */
+				 padding: 20px;
+				 border: 1px solid #888;
+				 width: 50%; /* Could be more or less, depending on screen size */
+		 }
+		 /* The Close Button */
+		 .close {
+				 color: #aaa;
+				 float: right;
+				 font-size: 28px;
+				 font-weight: bold;
+		 }
+		 .close:hover,
+		 .close:focus {
+				 color: black;
+				 text-decoration: none;
+				 cursor: pointer;
+		 }
+
+
+		</style>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<!-- logo -->
+							<li><img src="images/logo.png" width = '280' height = '280' style = 'margin-left:auto; margin-right:auto; display:block; padding:0px 0px 60px 0px;' /></li>
+							<li><a href="#intro"><p>ABOUT US</p></a></li>
+							<li><a href="#one"><p>회의 참여하기</p></a></li>
+							<li><a href="#two"><p>사용자 참여 현황</p></a></li>
+							<li><a href="#three"><p>MY PAGE</p></a></li>
+							<li><a href="#four"><p>문의하기</p></a></li>
+							<!-- Sign in / log in -->
+							<li style="margin-left:30px; margin-right:30px"><button id="signin_btn" style = 'float:left'> SIGN IN</button><button id="signup_btn" style = 'float:right'> SIGN UP</button></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- The Modal -->
+				<div id="InModal" class="modal">
+
+ 		 		 <!-- Modal content -->
+ 		 		 <div class="modal-content">
+ 		 			 <span class="close">&times;</span>
+ 		 			 <p >sign in</p>
+ 		 		 </div>
+
+ 		 	 </div>
+
+			 <div id="UpModal" class="modal">
+
+		 		 <!-- Modal content -->
+		 		 <div class="modal-content">
+		 			 <span class="close">&times;</span>
+		 			 <p>sign up</p>
+		 		 </div>
+
+		 	 </div>
+
+
+				<script>
+				// Get the modal
+	          var inmodal = document.getElementById('InModal');
+						var upmodal = document.getElementById('UpModal');
+	          // Get the button that opens the modal
+	          var inbtn = document.getElementById("signin_btn");
+						var upbtn = document.getElementById("signup_btn");
+
+	          // Get the <span> element that closes the modal
+	          var inspan = document.getElementsByClassName("close")[0];
+						var upspan = document.getElementsByClassName("close")[0];
+
+	          // When the user clicks on the button, open the modal
+	          inbtn.onclick = function() {
+	              inmodal.style.display = "block";
+	          }
+						upbtn.onclick = function(){
+								upmodal.style.display = "block";
+						}
+
+
+
+	          // When the user clicks anywhere outside of the modal, close it
+	          window.onclick = function(event) {
+	              if (event.target == inmodal) {
+	                  inmodal.style.display = "none";
+	              }
+	          }
+						window.onclick = function(event) {
+								if (event.target == upmodal) {
+										upmodal.style.display = "none";
+								}
+						}
+
+
+
+				</script>
+
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Hyperspace</h1>
+							<p>Just another fine responsive site template designed by <a href="http://html5up.net">HTML5 UP</a><br />
+							and released for free under the <a href="http://html5up.net/license">Creative Commons</a>.</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">회의 참여하기</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Sed ipsum dolor</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Feugiat consequat</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>Ultricies aliquam</h2>
+									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
+									<ul class="actions">
+										<li><a href="generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</section>
+
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2>What we do</h2>
+							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<div class="features">
+								<section>
+									<span class="icon major fa-code"></span>
+									<h3>Lorem ipsum amet</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-lock"></span>
+									<h3>Aliquam sed nullam</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-cog"></span>
+									<h3>Sed erat ullam corper</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-desktop"></span>
+									<h3>Veroeros quis lorem</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-chain"></span>
+									<h3>Urna quis bibendum</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+								<section>
+									<span class="icon major fa-diamond"></span>
+									<h3>Aliquam urna dapibus</h3>
+									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+								</section>
+							</div>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>Get in touch</h2>
+							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="name">Name</label>
+												<input type="text" name="name" id="name" />
+											</div>
+											<div class="field half">
+												<label for="email">Email</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<div class="field">
+												<label for="message">Message</label>
+												<textarea name="message" id="message" rows="5"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><a href="" class="button submit">Send Message</a></li>
+										</ul>
+									</form>
+								</section>
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Address</h3>
+											<span>12345 Somewhere Road #654<br />
+											Nashville, TN 00000-0000<br />
+											USA</span>
+										</li>
+										<li>
+											<h3>Email</h3>
+											<a href="#">user@untitled.tld</a>
+										</li>
+										<li>
+											<h3>Phone</h3>
+											<span>(000) 000-0000</span>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+					<!-- four -->
+						<section id="four" class="wrapper style1 fade-up">
+							<div class="inner">
+								<h1>문의하기</h1>
+								<p style="margin-bottom:15px"> 사용하시는 데에 발생하신 문제점이나 불편사항을 보내주시면 담당자가 빠른 시일 내로 답변드리겠습니다.</p>
+								<div class="split style1">
+									<section>
+										<form method="post" action="#">
+											<div class="fields">
+												<div class="field half">
+													<label for="name">ID</label>
+													<input type="text" name="name" id="name" />
+												</div>
+												<div class="field half">
+													<label for="email">Email</label>
+													<input type="text" name="email" id="email" />
+												</div>
+												<div class="field">
+													<label for="message">Message</label>
+													<textarea name="message" id="message" rows="5"></textarea>
+												</div>
+											</div>
+											<ul class="actions">
+												<li><a href="" class="button submit">Send Message</a></li>
+											</ul>
+										</form>
+									</section>
+									<section>
+										<ul class="contact">
+											<li>
+												<h3>Address</h3>
+												<span>20 Kwangwoon-ro, Nowon-gu </span><br />
+												Seoul 01897<br />
+												KOREA</span>
+											</li>
+											<li>
+												<h3>Email</h3>
+												<a href="#">ADMIN_MAIL@naver.com</a>
+											</li>
+											<li>
+												<h3>Phone</h3>
+												<span>비밀♡</span>
+											</li>
+											<li>
+												<h3>Social</h3>
+												<ul class="icons">
+													<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
+													<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
+													<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
+													<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
+													<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+												</ul>
+											</li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</section>
+
+			</div>
+
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
