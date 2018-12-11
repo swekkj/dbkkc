@@ -12,7 +12,7 @@ var pool = mysql.createPool({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-      res.render('index');
+      res.render('elements');
       connection.release();
 
 });

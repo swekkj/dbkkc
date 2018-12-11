@@ -35,7 +35,10 @@ body {
 ol, ul {
 	list-style: none;
 }
-
+.main-grid2 {
+    width:500px;
+    background-color: #fff;
+}
 blockquote, q {
 	quotes: none;
 }
