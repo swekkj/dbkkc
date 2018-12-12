@@ -5,11 +5,11 @@ var pool = mysql.createPool({
   connectionLimit:5,
   host : 'localhost',
   user : 'root',
-  database: 'dbtest',
-  password: 'PASSWORD'
+  database: 'db',
+  password: 'passwd'
 });
 
-router.get('/', function(req, res, next) {  
+router.get('/', function(req, res, next) {
   pool.getConnection(function(err,conn){
     if(err) console.error("pool connect error : "+err);
     var sql = "SELECT * FROM chatMeetingList";
@@ -21,8 +21,8 @@ router.get('/', function(req, res, next) {
     })
   })
 });
-router.get('/:idx', function(req, res, next) { 
-  var idx = req.params.idx; 
+router.get('/:idx', function(req, res, next) {
+  var idx = req.params.idx;
   pool.getConnection(function(err,conn){
     if(err) console.error("pool connect error : "+err);
     var sql = "SELECT * FROM chatMeetingList WHERE idx="+idx;

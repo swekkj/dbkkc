@@ -6,11 +6,11 @@ var pool = mysql.createPool({
   connectionLimit:5,
   host : 'localhost',
   user : 'root',
-  database: 'dbtest',
-  password: 'PASSWORD'
+  database: 'db',
+  password: 'passwd'
 });
 /* GET home page. */
-router.get('/', function(req, res, next) {  
+router.get('/', function(req, res, next) {
   pool.getConnection(function(err,conn){
     if(err) console.error("pool connect error : "+err);
     var sql = "SELECT * FROM videoMeetingList";
