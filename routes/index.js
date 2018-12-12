@@ -19,8 +19,8 @@ var pool = mysql.createPool({
   connectionLimit:5,
   host : 'localhost',
   user : 'root',
-  database: 'db',
-  password: 'passwd'
+  database: 'dbtest',
+  password: 'PASSWORD'
 });
 
 /* GET home page. */
