@@ -12,42 +12,6 @@
 			margin-top : 0px;
 			margin-bottom: 0px;
 		}
-		/* The Modal (background) */
-		 .modal {
-				 display: none; /* Hidden by default */
-				 position: fixed; /* Stay in place */
-				 z-index: 1; /* Sit on top */
-				 left: 0;
-				 top: 0;
-				 width: 100%; /* Full width */
-				 height: 100%; /* Full height */
-				 overflow: auto; /* Enable scroll if needed */
-				 background-color: rgb(0,0,0); /* Fallback color */
-				 background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-		 }
-
-		 /* Modal Content/Box */
-		 .modal-content {
-				 background-color: #fefefe;
-				 margin: 15% auto; /* 15% from the top and centered */
-				 padding: 20px;
-				 border: 1px solid #888;
-				 width: 50%; /* Could be more or less, depending on screen size */
-		 }
-		 /* The Close Button */
-		 .close {
-				 color: #aaa;
-				 float: right;
-				 font-size: 28px;
-				 font-weight: bold;
-		 }
-		 .close:hover,
-		 .close:focus {
-				 color: black;
-				 text-decoration: none;
-				 cursor: pointer;
-		 }
-
 
 		</style>
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
@@ -68,7 +32,7 @@
 							<li><a href="#four"><p>문의하기</p></a></li>
 							<!-- Sign in / log in -->
 							<li>
-								<p><b style="margin-left:30px; float:left;">Welcome! <%=rows[0].nickname%> </b></p>
+								<p><b style="margin-left:30px; float:left;">Welcome! <%=member[0].nickname%> </b></p>
 							</li>
 							<a href="/" style="float:right; margin-top:40px;" onfocus='this.blur()'><b>LOGOUT</b></a>
 						</ul>
@@ -80,66 +44,6 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-				<!-- The Modal -->
-				<div id="InModal" class="modal">
-
- 		 		 <!-- Modal content -->
- 		 		 <div class="modal-content">
- 		 			 <span class="close">&times;</span>
- 		 			 <p >sign in</p>
- 		 		 </div>
-
- 		 	 </div>
-
-			 <div id="UpModal" class="modal">
-
-		 		 <!-- Modal content -->
-		 		 <div class="modal-content">
-		 			 <span class="close">&times;</span>
-		 			 <p>sign up</p>
-		 		 </div>
-
-		 	 </div>
-
-
-				<script>
-				// Get the modal
-	          var inmodal = document.getElementById('InModal');
-						var upmodal = document.getElementById('UpModal');
-	          // Get the button that opens the modal
-	          var inbtn = document.getElementById("signin_btn");
-						var upbtn = document.getElementById("signup_btn");
-
-	          // Get the <span> element that closes the modal
-	          var inspan = document.getElementsByClassName("close")[0];
-						var upspan = document.getElementsByClassName("close")[0];
-
-	          // When the user clicks on the button, open the modal
-	          inbtn.onclick = function() {
-	              inmodal.style.display = "block";
-	          }
-						upbtn.onclick = function(){
-								upmodal.style.display = "block";
-						}
-
-
-
-	          // When the user clicks anywhere outside of the modal, close it
-	          window.onclick = function(event) {
-	              if (event.target == inmodal) {
-	                  inmodal.style.display = "none";
-	              }
-	          }
-						window.onclick = function(event) {
-								if (event.target == upmodal) {
-										upmodal.style.display = "none";
-								}
-						}
-
-
-
-				</script>
-
 
 				<!-- Intro -->
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
@@ -239,57 +143,29 @@
 				<!-- Three -->
 					<section id="three" class="wrapper style1 fade-up">
 						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<h2>MY PAGE</h2>
 							<div class="split style1">
 								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
+									<table width = 90% height = 90% style="margin:auto; border:2px;">
+
+										<tr>
+
+											<div width=350px height=350px style="float:left; margin-right:20px" >
+												<img src="/images/user_img/<%=member[0].image%>" width = 350px height=350px>
 											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
+											<div >
+														이름 | <%=personality[0].name%>
 											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
+											<div>
+												sdfq123
 											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<span>12345 Somewhere Road #654<br />
-											Nashville, TN 00000-0000<br />
-											USA</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">user@untitled.tld</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(000) 000-0000</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
+											<div>
+												qwef
+											</div>
+										</tr>
+
+
+									</table>
 								</section>
 							</div>
 						</div>
