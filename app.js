@@ -39,6 +39,80 @@ app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
 app.use('/', signinRouter);
 
+var chat1 = io.of('/chat/1');
+var chat2 = io.of('/chat/2');
+chat1.on('connection', function(socket) {
+
+  // 접속한 클라이언트의 정보가 수신되면
+  socket.on('login', function(data) {
+    // socket에 클라이언트 정보를 저장한다
+    socket.name = data.name;
+    socket.userid = data.userid;
+    console.log(socket.name);
+    console.log(socket.userid);
+    // 접속된 모든 클라이언트에게 메시지를 전송한다
+    io.emit('login', data.name );
+  });
+
+  // 클라이언트로부터의 메시지가 수신되면
+  socket.on('chat', function(data) {
+    var msg = {
+      from: {
+        name: socket.name,
+        userid: socket.userid
+      },
+      msg: data.msg
+    };
+
+    // 메시지를 전송한 클라이언트를 제외한 모든 클라이언트에게 메시지를 전송한다
+    socket.broadcast.emit('chat', msg);
+  });
+
+  // force client disconnect from server
+  socket.on('forceDisconnect', function() {
+    socket.disconnect();
+  })
+
+  socket.on('disconnect', function() {
+    console.log('user disconnected: ' + socket.name);
+  });
+});
+chat2.on('connection', function(socket) {
+
+  // 접속한 클라이언트의 정보가 수신되면
+  socket.on('login', function(data) {
+    // socket에 클라이언트 정보를 저장한다
+    socket.name = data.name;
+    socket.userid = data.userid;
+    console.log(socket.name);
+    console.log(socket.userid);
+    // 접속된 모든 클라이언트에게 메시지를 전송한다
+    io.emit('login', data.name );
+  });
+
+  // 클라이언트로부터의 메시지가 수신되면
+  socket.on('chat', function(data) {
+    var msg = {
+      from: {
+        name: socket.name,
+        userid: socket.userid
+      },
+      msg: data.msg
+    };
+
+    // 메시지를 전송한 클라이언트를 제외한 모든 클라이언트에게 메시지를 전송한다
+    socket.broadcast.emit('chat', msg);
+  });
+
+  // force client disconnect from server
+  socket.on('forceDisconnect', function() {
+    socket.disconnect();
+  })
+
+  socket.on('disconnect', function() {
+    console.log('user disconnected: ' + socket.name);
+  });
+});
 io.on('connection', function(socket) {
 
   // 접속한 클라이언트의 정보가 수신되면
@@ -46,7 +120,8 @@ io.on('connection', function(socket) {
     // socket에 클라이언트 정보를 저장한다
     socket.name = data.name;
     socket.userid = data.userid;
-
+    console.log(socket.name);
+    console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
     io.emit('login', data.name );
   });

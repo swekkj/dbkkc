@@ -35,13 +35,14 @@
   <!--<script src="/javascripts/chat.js"></script>-->
   <script>
   $(function(){
+    var namespace = "/chat/" +"<%=roomInfo.idx%>";
+    console.log(namespace);
     // socket.io 서버에 접속한다
-    var socket = io();
+    var socket = io(namespace);
     // 서버로 자신의 정보를 전송한다.
     socket.emit("login", {
-      // name: "ungmo2",
-      name: makeRandomName(),
-      userid: "ungmo2@gmail.com"
+      name: "<%=nick%>",
+      userid: "<%=email%>"
     });
 
     // 서버로부터의 메시지가 수신되면
@@ -64,15 +65,6 @@
       socket.emit("chat", { msg: $msgForm.val() });
       $msgForm.val("");
     });
-
-    function makeRandomName(){
-      var name = "";
-      var possible = "abcdefghijklmnopqrstuvwxyz";
-      for( var i = 0; i < 3; i++ ) {
-        name += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
-      return name;
-    }
   });
   </script>
 </body>
