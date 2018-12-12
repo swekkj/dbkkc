@@ -17,10 +17,14 @@ router.get('/', function(req, res, next) {
     conn.query(sql,function(err,result){
       if(err) console.error("query connect error : " + err);
       console.log(result);
-      res.render('generic',{list : result});
+      res.render('videolist',{list : result});
       conn.release();
     })
   })
 });
+
+router.get('/make',function(req,res,next){
+  res.render('rtcMake');
+})
 
 module.exports = router;

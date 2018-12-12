@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Generic - Hyperspace by HTML5 UP</title>
+		<title>화상 회의 목록</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
 	</head>
@@ -16,8 +16,8 @@
 				<nav>
 					<ul>
 						<li><a href="/">Home</a></li>
-						<li><a href="/generic" class="active">화상 회의 목록</a></li>
-						<li><a href="elements.html">My Page</a></li>
+						<li><a href="/video" class="active">화상 회의 목록</a></li>
+						<li><a href="/video/make">방만들기</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -40,20 +40,22 @@
 							<% if(info.isLock==1)
 								{
 							%>
-								<div style="float:right;"><img src="images/lock.png" width="30" height="30"/></div>
+								<a href="/rtc/<%=info.idx%>">
+									<div style="float:right;"><img src="images/lock.png" width="30" height="30"/></div>
+								</a>
 							<%
 								}
+								else{
 							%>	
+								<a href="/rtc/<%=info.idx%>">
+									<div style="float:right;"><img src="images/enter.png" width="30" height="30"/></div>
+								</a>
+							<%
+								}
+							%>
 								<br>
 							</div>
 							<br>
-							<script>
-								$(document).ready(function(c) {
-									$('#meeting%<%=info.idx%>').on('click', function(c){
-										$('#meeting%<%=info.idx%>').hide();
-									});
-                                });
-							</script>
 						<%
 							}
 						%>

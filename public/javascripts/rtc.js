@@ -120,6 +120,7 @@ window.addEventListener('load', () => {
 
   // Join existing Chat Room
   const joinRoom = (roomName) => {
+    console.log("hihih")
     // eslint-disable-next-line no-console
     console.log(`Joining Room: ${roomName}`);
     webrtc.joinRoom(roomName);
