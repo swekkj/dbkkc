@@ -62,7 +62,7 @@ router.post('/', upload.single('user_image'), function(req, res, next) {
     connection.query(sqlforMEMBER, member_data, function(err, rows){
       console.log('in member query');
       if(err) console.error(err);
-      res.redirect('before_login');
+      res.redirect('/');
       connection.release();
     });
 
