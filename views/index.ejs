@@ -67,7 +67,10 @@
 							<li><a href="#three"><p>MY PAGE</p></a></li>
 							<li><a href="#four"><p>문의하기</p></a></li>
 							<!-- Sign in / log in -->
-							<li style="margin-left:30px; margin-right:30px"><button id="signin_btn" style = 'float:left'> SIGN IN</button><button id="signup_btn" style = 'float:right'> SIGN UP</button></li>
+							<li>
+								<p><b style="margin-left:30px; float:left;">Welcome! <%=rows[0].nickname%> </b></p>
+							</li>
+							<a href="/" style="float:right; margin-top:40px;" onfocus='this.blur()'><b>LOGOUT</b></a>
 						</ul>
 					</nav>
 				</div>
