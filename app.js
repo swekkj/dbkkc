@@ -7,11 +7,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var rtcRouter = require('./routes/rtc');
-var genericRouter = require('./routes/video');
 var elementsRouter = require('./routes/elements');
 var chatRouter = require('./routes/chat');
 var signinRouter = require('./routes/index');
+var mcRouter = require('./routes/mc');
 var app = express();
 
 var http = require('http').Server(app);
@@ -33,10 +32,9 @@ app.set("port",3000);
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/rtc',rtcRouter);
-app.use('/video',genericRouter);
 app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
+app.use('/mc',mcRouter);
 app.use('/', signinRouter);
 
 var chat1 = io.of('/chat/1');

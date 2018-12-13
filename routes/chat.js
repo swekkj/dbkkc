@@ -6,7 +6,7 @@ var pool = mysql.createPool({
   host : 'localhost',
   user : 'root',
   database: 'db',
-  password: 'passwd'
+  password: 'password'
 });
 var userNick="";
 router.post('/', function(req, res, next) {
@@ -32,6 +32,7 @@ router.get('/', function(req, res, next) {
     var sql = "SELECT * FROM chatMeetingList";
     conn.query(sql,function(err,result){
       if(err) console.error("query connect error : " + err);
+      console.log(result);
       res.render('chatlist',{list : result});
       conn.release();
     })
@@ -39,22 +40,24 @@ router.get('/', function(req, res, next) {
 });
 router.get('/:idx', function(req, res, next) {
   var idx = req.params.idx;
-  console.log(userNick);
   pool.getConnection(function(err,conn){
     if(err) console.error("pool connect error : "+err);
     var sql = "SELECT * FROM chatMeetingList WHERE idx="+idx;
-    console.log(sql);
-    conn.query(sql,function(err,result1){
+    conn.query(sql,function(err,roomInfo){
       if(err) console.error("query connect error : " + err);
       var sql = "SELECT P.email FROM member AS m, personality AS P WHERE m.nickname='"+userNick+"' and m.phone=P.phone";
-      console.log(sql);
       conn.query(sql,function(err,result){
         if(err) console.error("query 2 connect error : "+err);
-          console.log(result);
-          res.render('chatroom',{roomInfo : result1[0], nick: userNick, email: result[0]});
+          res.render('chatroom',{roomInfo : roomInfo[0], nick: userNick, email: result[0]});
           conn.release();
       });
     });
   });
+});
+router.get('/make/:idx',function(req,res,next){
+  var idx = req.params.idx;
+  console.log(req.params);
+  console.log(userNick);
+  res.render('mc',{idx:idx,builder:userNick});
 });
 module.exports = router;
