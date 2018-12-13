@@ -35,7 +35,7 @@
 						%>
 									<div id="meeting<%=info.idx%>" style="border:3px solid;padding:10px;">
 										<span class="image fit">
-											<img src="images/<%=info.img%>" width="370" height="100"alt="" />
+											<img src="<%=info.img%>" width="370" height="100"alt="" />
 										</span>
 										<div style="float:left;"><h3><%=info.name%></h3></div>
 						<% 				if(info.isLock==1)
@@ -54,7 +54,6 @@
 						<%
 										}
 						%>
-										<br>
 									</div>
 						<%
 								}

@@ -36,7 +36,6 @@
   <script>
   $(function(){
     var namespace = "/chat/" +"<%=roomInfo.idx%>";
-    console.log(namespace);
     // socket.io 서버에 접속한다
     var socket = io(namespace);
     // 서버로 자신의 정보를 전송한다.

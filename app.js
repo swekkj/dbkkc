@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-
+var bodyParser = require('body-parser');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -12,6 +12,7 @@ var chatRouter = require('./routes/chat');
 var signinRouter = require('./routes/index');
 var signupRouter = require('./routes/index');
 var app = express();
+app.use(express.json());
 
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -34,9 +35,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
-app.use('/mc',mcRouter);
 app.use('/', signinRouter);
 app.use('/', signupRouter);
+
 var chat1 = io.of('/chat/1');
 var chat2 = io.of('/chat/2');
 var chat3 = io.of('/chat/3');
@@ -53,7 +54,7 @@ chat1.on('connection', function(socket) {
     socket.name = data.name;
     socket.userid = data.userid;
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat1.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면
@@ -89,7 +90,7 @@ chat2.on('connection', function(socket) {
     console.log(socket.name);
     console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat2.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면
@@ -125,7 +126,7 @@ chat3.on('connection', function(socket) {
     console.log(socket.name);
     console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat3.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면
@@ -161,7 +162,7 @@ chat4.on('connection', function(socket) {
     console.log(socket.name);
     console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat4.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면
@@ -197,7 +198,7 @@ chat5.on('connection', function(socket) {
     console.log(socket.name);
     console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat5.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면
@@ -233,7 +234,7 @@ chat6.on('connection', function(socket) {
     console.log(socket.name);
     console.log(socket.userid);
     // 접속된 모든 클라이언트에게 메시지를 전송한다
-    io.emit('login', data.name );
+    chat6.emit('login', data.name );
   });
 
   // 클라이언트로부터의 메시지가 수신되면

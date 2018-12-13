@@ -23,49 +23,55 @@
 				<!-- The Modal -->
       <h1 class="major"><%=idx%>번 방 만들기</h1>
 			 <div id="UpModal" class="modal">
-
-		 		 <!-- Modal content -->
 		 		 <div class="modal-up-content">
-					 <form action="/" method="post" onsubmit="return onWriteSubmit()" enctype="multipart/form-data">
+					 <form action="/chat/make" method="post">
 						 <table>
 						 	<tr>
 								<div>
 									 <td>방 이름</td>
-									 <td><input type="text" name="user_name" id="user_name" /></td>
+									 <td><input type="text" name="room_name" id="room_name" /></td>
 								 </div>
 						 	</tr>
 							<tr>
 								<div>
 									<td>비밀번호</td>
-									<td><input type="password" name="user_pw" id="user_pw" /></td>
+									<td><input type="text" name="room_pw" id="room_pw"/></td>
 								</div>
 							</tr>
-
 							<tr>
 								<div>
 									<td>만든이</td>
-									<td><input type="email" name="user_email" id="user_email" value="<%=builder%>" readonly/></td>
+									<td><input type="text" name="room_builder" id="room_builder" value="<%=builder%>" readonly/></td>
 								</div>
 							</tr>
-							<tr>
-								<div>
-									<td>주소</td>
-									<td><input type="text" name="user_address" id="user_address"/></td>
-								</div>
-							</tr>
-							<tr>
-								<div>
-									<td>사용자 이미지</td>
-									 <td><input type="file" name="user_image"/></td>
-								 </div>
-							</tr>
+              <input type="hidden" value="<%=idx%>" name="idx" id="idx"/>
 						 </table>
 						 <tr>
 							 <button type="submit" style="margin-left:auto; margin-right:auto;"> SUBMIT </button>
 						 </tr>
 					 </form>
 		 		 </div>
-		 	 </div>
+        </div>
+        <script>
+            function onWriteSubmit(){
+              if($("#room_name").val().trim() == "")
+              {
+                var message = "방 이름을 입력해주세요";
+                $("#room_name").val("");
+                $("#room_name").focus();
+                alert(message);
+                return false;
+              }
+              if($("#room_image").val().trim() == "")
+              {
+                var message = "방 이름을 입력해주세요";
+                $("#room_image").val("");
+                $("#room_image").focus();
+                alert(message);
+                return false;
+              }
+            }
+        </script>
       <footer id="footer" class="wrapper alt">
         <div class="inner">
           <ul class="menu">
