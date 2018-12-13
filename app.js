@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var elementsRouter = require('./routes/elements');
 var chatRouter = require('./routes/chat');
 var signinRouter = require('./routes/index');
-var mcRouter = require('./routes/mc');
+var signupRouter = require('./routes/index');
 var app = express();
 
 var http = require('http').Server(app);
@@ -36,7 +36,7 @@ app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
 app.use('/mc',mcRouter);
 app.use('/', signinRouter);
-
+app.use('/', signupRouter);
 var chat1 = io.of('/chat/1');
 var chat2 = io.of('/chat/2');
 var chat3 = io.of('/chat/3');
