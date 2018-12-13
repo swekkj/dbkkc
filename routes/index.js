@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
 
 
 // singup
-router.post('/', upload.single('user_img'), function(req, res, next) {
+router.post('/signup', upload.single('user_image'), function(req, res, next) {
 
   console.log('hello');
   var user_id = req.body.user_id;
