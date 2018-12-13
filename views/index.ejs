@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>KKC</title>
+		<title>KKC Database</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
@@ -78,13 +78,16 @@
 				<!-- One -->
 					<section id="one" class="wrapper style2 spotlights">
 						<section>
-							<a href="#" class="image"><img src="/images/pic01.jpg" alt="" data-position="center center" /></a>
+							<a href="#" class="image"><img src="/images/canvas.png" alt="" data-position="center center" /></a>
 							<div class="content">
 								<div class="inner">
-									<h2>화상 회의</h2>
-									<p>최대 4명까지 즐길 수 있는 화상 회의 입니다.</p>
+									<h2>캔버스 회의</h2>
+									<p>그림을 그릴 수 있는 캔버스에 그리며 회의할 수 있습니다.</p>
 									<ul class="actions">
-										<li><a href="/video" class="button">목록 보기</a></li>
+									<form method="post" action="/canvas">
+										<input type="hidden" id="nick" name="nick" value="<%=member[0].nickname%>"/>
+										<li><button type = "submit"  class="button">목록 보기</button></li>
+									</form>
 									</ul>
 								</div>
 							</div>
