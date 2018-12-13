@@ -11,6 +11,8 @@ var elementsRouter = require('./routes/elements');
 var chatRouter = require('./routes/chat');
 var signinRouter = require('./routes/index');
 var signupRouter = require('./routes/index');
+var canvasRouter = require('./routes/canvas');
+
 var app = express();
 app.use(express.json());
 
@@ -35,6 +37,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
+app.use('/canvas',canvasRouter);
+
 app.use('/', signinRouter);
 app.use('/', signupRouter);
 
@@ -44,6 +48,47 @@ var chat3 = io.of('/chat/3');
 var chat4 = io.of('/chat/4');
 var chat5 = io.of('/chat/5');
 var chat6 = io.of('/chat/6');
+
+var canvas1 = io.of('/canvas/1');
+var canvas2 = io.of('/canvas/2');
+var canvas3 = io.of('/canvas/3');
+var canvas4 = io.of('/canvas/4');
+var canvas5 = io.of('/canvas/5');
+var canvas6 = io.of('/canvas/6');
+
+function onConnection(socket){
+  socket.on('drawing',(data)=>socket.broadcast.emit('drawing',data));
+};
+canvas1.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
+canvas2.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
+canvas3.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
+canvas4.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
+canvas5.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
+canvas6.on('connection',function(socket){
+  socket.on('drawing',function(data){
+    socket.broadcast.emit('drawing',data);
+  });
+});
 
 chat1.on('connection', function(socket) {
 

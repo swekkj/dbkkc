@@ -16,7 +16,7 @@
 				<nav>
 					<ul>
 						<li><a href="/">Home</a></li>
-						<li><a href="/chat" class="active">회의 목록</a></li>
+						<li><a href="/chat" class="active">캔버스 목록</a></li>
 						<li><a href="/chat/make">방만들기</a></li>
 					</ul>
 				</nav>
@@ -26,7 +26,7 @@
 				<!-- Main -->
 					<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">회의 목록</h1>
+							<h1 class="major">캔버스 목록</h1>
 						<%	for(var i=0; i<list.length; i++)
 							{
 								var info = list[i];
@@ -41,14 +41,14 @@
 						<% 				if(info.isLock==1)
 										{
 						%>
-										<a href="/chat/<%=info.idx%>">
+										<a href="/canvas/<%=info.idx%>">
 											<div style="float:right;"><img src="images/lock.png" width="30" height="30"/></div>
 										</a>
 						<%
 										}
 										else{
 						%>	
-										<a href="/chat/<%=info.idx%>">
+										<a href="/canvas/<%=info.idx%>">
 											<div style="float:right;"><img src="images/enter.png" width="30" height="30"/></div>
 										</a>
 						<%
@@ -60,7 +60,7 @@
 								else
 								{
 						%>
-									<a href="/chat/make/<%=info.idx%>"><div id="meeting<%=info.idx%>" style="padding:10px;">
+									<a href="/canvas/make/<%=info.idx%>"><div id="meeting<%=info.idx%>" style="padding:10px;">
 										<span class="image fit">
 											<img src="images/cross.png" width="370" height="100"alt="" />
 										</span>
