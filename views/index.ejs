@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
    	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;subset=korean" rel="stylesheet">
+
 		<style>
 		p{
 			font-family: 'Nanum Gothic Coding', monospace;
@@ -104,49 +105,40 @@
 								</div>
 							</div>
 						</section>
-
 					</section>
 
 				<!-- Two -->
+
 					<section id="two" class="wrapper style3 fade-up">
 						<div class="inner">
-							<h2>What we do</h2>
-							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
+							<h2>사용자 참여 현황</h2>
 							<div class="features">
-								<section>
-									<span class="icon major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-chain"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-diamond"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
+							<!--	<svg width=960 height=500></svg>-->
+<%=
+
+							var arc = d3.arc().innerRadius(100).outerRadius(240);
+
+							var svg = d3.select("svg");
+							var width = +svg.attr("width");
+							var height = +svg.attr("height");
+							var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 +")");
+
+							var data = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+							var arcs = d3.pie()(data);
+
+							console.log("arcs: ", arc(arcs[0]))
+
+							var background = g.selectAll("path")
+							    .data(arcs)
+							    .enter()
+							    .append("path")
+							    .style("fill", function(d,i){
+							      return d3.color("hsl(120, 50%, " + d.value + "%)");
+							    })
+							    .attr("d", arc);
+%>
 							</div>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
-							</ul>
+
 						</div>
 					</section>
 
@@ -269,6 +261,11 @@
 			<script src="/assets/js/breakpoints.min.js"></script>
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="/javascripts/d3.min.js"></script>
+		<script src="/javascripts/d3.js"></script>
+		<script src="/javascripts/graph.js"></script>
+
 
 	</body>
 </html>

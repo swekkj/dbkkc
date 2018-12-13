@@ -90,6 +90,8 @@ router.post('/signin', function(req, res, next){
       {res.redirect("/");}
       else
       {
+      
+
         var newsql = "select * from personality where phone=?";
         var pho = result[0].phone;
         conn.query(newsql, [pho], function(err, other){
