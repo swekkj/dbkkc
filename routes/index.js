@@ -4,6 +4,9 @@ var router = express.Router();
 var mysql = require('mysql');
 var multer = require('multer');
 
+const xlsx = require('xlsx');
+const fs = require('fs');
+
 var _storage = multer.diskStorage({
   destination: function(req, file, cb){
     var path = './public/images/user_img';
@@ -20,7 +23,7 @@ var pool = mysql.createPool({
   host : 'localhost',
   user : 'root',
   database: 'db',
-  password: 'password'
+  password: 'passwd'
 });
 
 /* GET home page. */
@@ -90,13 +93,13 @@ router.post('/signin', function(req, res, next){
       {res.redirect("/");}
       else
       {
-      
-
-        var newsql = "select * from personality where phone=?";
-        var pho = result[0].phone;
-        conn.query(newsql, [pho], function(err, other){
-          res.render('index', {member: result, personality:other} );
-          conn.release();
+        conn.query("select addr, count(*) from personality group by addr", function(err, imsi){
+          var newsql = "select * from personality where phone=?";
+          var pho = result[0].phone;
+          conn.query(newsql, [pho], function(err, other){
+            res.render('index', {member: result, personality:other, sibal:imsi} );
+            conn.release();
+          });
         });
       }
     });

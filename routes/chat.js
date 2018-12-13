@@ -16,7 +16,7 @@ var pool = mysql.createPool({
   host : 'localhost',
   user : 'root',
   database: 'db',
-  password: 'password'
+  password: 'passwd'
 });
 var userNick="";
 router.post('/', function(req, res, next) {
@@ -76,7 +76,7 @@ router.post('/make',function(req,res,next){
   var room_builder = req.body.room_builder;
   var idx = req.body.idx;
   var room_image = '/images/room_img/chat0'+String(idx)+".jpeg"
-  
+
   var isLock=0;
   var sql;
   if(room_pw!=''){

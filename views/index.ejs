@@ -7,6 +7,8 @@
 		<link rel="stylesheet" href="/assets/css/main.css" />
    	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&amp;subset=korean" rel="stylesheet">
 
+		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+	  <link rel="stylesheet" href="normalize.css">
 		<style>
 		p{
 			font-family: 'Nanum Gothic Coding', monospace;
@@ -18,7 +20,6 @@
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -112,33 +113,7 @@
 					<section id="two" class="wrapper style3 fade-up">
 						<div class="inner">
 							<h2>사용자 참여 현황</h2>
-							<div class="features">
-							<!--	<svg width=960 height=500></svg>-->
-<%=
-
-							var arc = d3.arc().innerRadius(100).outerRadius(240);
-
-							var svg = d3.select("svg");
-							var width = +svg.attr("width");
-							var height = +svg.attr("height");
-							var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 +")");
-
-							var data = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-							var arcs = d3.pie()(data);
-
-							console.log("arcs: ", arc(arcs[0]))
-
-							var background = g.selectAll("path")
-							    .data(arcs)
-							    .enter()
-							    .append("path")
-							    .style("fill", function(d,i){
-							      return d3.color("hsl(120, 50%, " + d.value + "%)");
-							    })
-							    .attr("d", arc);
-%>
-							</div>
-
+								<svg width=960 height=500></svg>
 						</div>
 					</section>
 
@@ -228,11 +203,11 @@
 											<li>
 												<h3>Social</h3>
 												<ul class="icons">
-													<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-													<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-													<li><a href="#" class="fa-github"><span class="label">GitHub</span></a></li>
-													<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-													<li><a href="#" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+													<li><a href="https://www.twitter.com" class="fa-twitter"><span class="label">Twitter</span></a></li>
+													<li><a href="https://www.facebook.com" class="fa-facebook"><span class="label">Facebook</span></a></li>
+													<li><a href="https://www.github.com" class="fa-github"><span class="label">GitHub</span></a></li>
+													<li><a href="https://www.instgram.com" class="fa-instagram"><span class="label">Instagram</span></a></li>
+													<li><a href="https://www.naver.com" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
 												</ul>
 											</li>
 										</ul>
@@ -252,7 +227,7 @@
 					</ul>
 				</div>
 			</footer>
-
+			<script>console.log("hihi");</script>
 		<!-- Scripts -->
 			<script src="/assets/js/jquery.min.js"></script>
 			<script src="/assets/js/jquery.scrollex.min.js"></script>
@@ -264,7 +239,36 @@
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="/javascripts/d3.min.js"></script>
 		<script src="/javascripts/d3.js"></script>
-		<script src="/javascripts/graph.js"></script>
+		<script type="text/javascript">
+
+		var arc = d3.arc()
+            .innerRadius(100)
+            .outerRadius(240);
+		var hi = <%-JSON.stringify(sibal)%>;
+
+
+          var svg = d3.select("svg"),
+          width = +svg.attr("width"),
+          height = +svg.attr("height"),
+          g = svg.append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 +")")
+
+
+					var data=[hi[0]["count(*)"],hi[1]["count(*)"],hi[2]["count(*)"],hi[3]["count(*)"],hi[4]["count(*)"]];
+          var arcs = d3.pie()(data);
+
+          console.log("arcs: ", arc(arcs[0]))
+
+          var background = g.selectAll("path")
+              .data(arcs)
+              .enter()
+              .append("path")
+              .style("fill", function(d,i){
+                return d3.color("hsl(120, 50%, " + d.value + "%)");
+              })
+              .attr("d", arc)
+
+		</script>
 
 
 	</body>
