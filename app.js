@@ -12,6 +12,7 @@ var genericRouter = require('./routes/video');
 var elementsRouter = require('./routes/elements');
 var chatRouter = require('./routes/chat');
 var signinRouter = require('./routes/index');
+var signupRouter = require('./routes/index');
 var app = express();
 
 var http = require('http').Server(app);
@@ -38,7 +39,7 @@ app.use('/video',genericRouter);
 app.use('/elements',elementsRouter);
 app.use('/chat',chatRouter);
 app.use('/', signinRouter);
-
+app.use('/', signupRouter);
 var chat1 = io.of('/chat/1');
 var chat2 = io.of('/chat/2');
 chat1.on('connection', function(socket) {
