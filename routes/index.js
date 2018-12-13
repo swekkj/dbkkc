@@ -19,20 +19,19 @@ var pool = mysql.createPool({
   connectionLimit:5,
   host : 'localhost',
   user : 'root',
-  database: 'dbtest',
-  password: 'PASSWORD'
+  database: 'db',
+  password: 'passwd'
 });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
       res.render('before_login');
       connection.release();
-
 });
 
 
 // singup
-router.post('/', upload.single('user_image'), function(req, res, next) {
+router.post('/', upload.single('user_img'), function(req, res, next) {
 
   console.log('hello');
   var user_id = req.body.user_id;
@@ -47,6 +46,7 @@ router.post('/', upload.single('user_image'), function(req, res, next) {
 
   var member_data = [user_id, user_pw, user_nickname, user_image, user_phone];
   var personality_data = [user_name, user_birth, user_address, user_phone, user_email];
+
 
   pool.getConnection(function (err, connection) {
     // personality table
@@ -71,14 +71,12 @@ router.post('/', upload.single('user_image'), function(req, res, next) {
 });
 
 
+
 //signin
 router.post('/signin', function(req, res, next){
 
   var id = req.body.conn_id;
   var pw = req.body.conn_pw;
-
-  console.log([id,pw]);
-
 
   pool.getConnection(function (err, conn) {
     if(err) console.error(err);
@@ -92,8 +90,12 @@ router.post('/signin', function(req, res, next){
       {res.redirect("/");}
       else
       {
-        res.render('index', {rows: result} );
-        conn.release();
+        var newsql = "select * from personality where phone=?";
+        var pho = result[0].phone;
+        conn.query(newsql, [pho], function(err, other){
+          res.render('index', {member: result, personality:other} );
+          conn.release();
+        });
       }
     });
   });

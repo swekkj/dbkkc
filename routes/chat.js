@@ -5,8 +5,8 @@ var pool = mysql.createPool({
   connectionLimit:5,
   host : 'localhost',
   user : 'root',
-  database: 'dbtest',
-  password: 'PASSWORD'
+  database: 'db',
+  password: 'passwd'
 });
 var userNick="";
 router.post('/', function(req, res, next) {
