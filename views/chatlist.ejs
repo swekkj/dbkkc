@@ -27,41 +27,53 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">회의 목록</h1>
-						<%
-							for(var i=0; i<list.length; i++)
+						<%	for(var i=0; i<list.length; i++)
 							{
 								var info = list[i];
-						%>
-							<div id="meeting<%=info.idx%>" style="border:3px solid;padding:10px;">
-								<span class="image fit">
-									<img src="images/<%=info.img%>" width="370" height="100"alt="" />
-								</span>
-								<div style="float:left;"><h3><%=info.name%></h3></div>
-							<% if(info.isLock==1)
+								if(info.name != null)
 								{
-							%>
-								<a href="/chat/<%=info.idx%>">
-									<div style="float:right;"><img src="images/lock.png" width="30" height="30"/></div>
-								</a>
-							<%
+						%>
+									<div id="meeting<%=info.idx%>" style="border:3px solid;padding:10px;">
+										<span class="image fit">
+											<img src="<%=info.img%>" width="370" height="100"alt="" />
+										</span>
+										<div style="float:left;"><h3><%=info.name%></h3></div>
+						<% 				if(info.isLock==1)
+										{
+						%>
+										<a href="/chat/<%=info.idx%>">
+											<div style="float:right;"><img src="images/lock.png" width="30" height="30"/></div>
+										</a>
+						<%
+										}
+										else{
+						%>	
+										<a href="/chat/<%=info.idx%>">
+											<div style="float:right;"><img src="images/enter.png" width="30" height="30"/></div>
+										</a>
+						<%
+										}
+						%>
+									</div>
+						<%
 								}
-								else{
-							%>	
-								<a href="/chat/<%=info.idx%>">
-									<div style="float:right;"><img src="images/enter.png" width="30" height="30"/></div>
-								</a>
-							<%
+								else
+								{
+						%>
+									<a href="/chat/make/<%=info.idx%>"><div id="meeting<%=info.idx%>" style="padding:10px;">
+										<span class="image fit">
+											<img src="images/cross.png" width="370" height="100"alt="" />
+										</span>
+									</div></a>
+						<%
 								}
-							%>
-								<br>
-							</div>
-							<br>
+						%>		
+									<br>
 						<%
 							}
 						%>
 						</div>
 					</section>
-
 			</div>
 			
 		<!-- Footer -->

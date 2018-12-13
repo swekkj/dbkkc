@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="kr">
+  <head>
+      <title>회의 목록</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="/assets/css/main.css" />
+      <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
+  </head>
+  <body class="is-preload">
+    <header id="header">
+      <a href="/" class="title">Hyperspace</a>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/chat" class="active">회의 목록</a></li>
+          <li><a href="/chat/make">방만들기</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="wrapper">
+				<!-- The Modal -->
+      <h1 class="major"><%=idx%>번 방 만들기</h1>
+			 <div id="UpModal" class="modal">
+		 		 <div class="modal-up-content">
+					 <form action="/chat/make" method="post">
+						 <table>
+						 	<tr>
+								<div>
+									 <td>방 이름</td>
+									 <td><input type="text" name="room_name" id="room_name" /></td>
+								 </div>
+						 	</tr>
+							<tr>
+								<div>
+									<td>비밀번호</td>
+									<td><input type="text" name="room_pw" id="room_pw"/></td>
+								</div>
+							</tr>
+							<tr>
+								<div>
+									<td>만든이</td>
+									<td><input type="text" name="room_builder" id="room_builder" value="<%=builder%>" readonly/></td>
+								</div>
+							</tr>
+              <input type="hidden" value="<%=idx%>" name="idx" id="idx"/>
+						 </table>
+						 <tr>
+							 <button type="submit" style="margin-left:auto; margin-right:auto;"> SUBMIT </button>
+						 </tr>
+					 </form>
+		 		 </div>
+        </div>
+        <script>
+            function onWriteSubmit(){
+              if($("#room_name").val().trim() == "")
+              {
+                var message = "방 이름을 입력해주세요";
+                $("#room_name").val("");
+                $("#room_name").focus();
+                alert(message);
+                return false;
+              }
+              if($("#room_image").val().trim() == "")
+              {
+                var message = "방 이름을 입력해주세요";
+                $("#room_image").val("");
+                $("#room_image").focus();
+                alert(message);
+                return false;
+              }
+            }
+        </script>
+      <footer id="footer" class="wrapper alt">
+        <div class="inner">
+          <ul class="menu">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
+      <script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+  </body>
+</html>
