@@ -16,7 +16,7 @@ var pool = mysql.createPool({
   host : 'localhost',
   user : 'root',
   database: 'db',
-  password: 'passwd'
+  password: 'password'
 });
 var userNick="";
 router.post('/', function(req, res, next) {
