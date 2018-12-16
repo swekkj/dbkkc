@@ -65,7 +65,7 @@ canvas1.on('connection',function(socket){
   });
 });
 canvas2.on('connection',function(socket){
-  socket.on('drawing',function(data){
+  socket.on('drawing',function(data){ 
     socket.broadcast.emit('drawing',data);
   });
 });

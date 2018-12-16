@@ -93,7 +93,7 @@ router.post('/signin', function(req, res, next){
       {res.redirect("/");}
       else
       {
-        conn.query("select addr, count(*) from personality group by addr", function(err, imsi){
+        conn.query("select addr as letter, count(*) as presses from personality group by addr", function(err, imsi){
           var newsql = "select * from personality where phone=?";
           var pho = result[0].phone;
           conn.query(newsql, [pho], function(err, other){
